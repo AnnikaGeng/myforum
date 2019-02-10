@@ -1,0 +1,514 @@
+<!doctype html>
+        <!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en-US"> <![endif]-->
+        <!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="en-US"> <![endif]-->
+        <!--[if IE 8]>    <html class="lt-ie9" lang="en-US"> <![endif]-->
+        <!--[if gt IE 8]><!--> <html lang="en-US"> <!--<![endif]-->
+        <head>
+                <!-- META TAGS -->
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+                <title>my forum</title>
+
+                <link rel="shortcut icon" href="images/favicon.png" />
+
+
+                
+
+                <!-- Style Sheet-->
+                <link rel="stylesheet" href="style.css"/>
+                <link rel='stylesheet' id='bootstrap-css-css'  href='css/bootstrap5152.css?ver=1.0' type='text/css' media='all' />
+                <link rel='stylesheet' id='responsive-css-css'  href='css/responsive5152.css?ver=1.0' type='text/css' media='all' />
+                <link rel='stylesheet' id='pretty-photo-css-css'  href='js/prettyphoto/prettyPhotoaeb9.css?ver=3.1.4' type='text/css' media='all' />
+                <link rel='stylesheet' id='main-css-css'  href='css/main5152.css?ver=1.0' type='text/css' media='all' />
+                <link rel='stylesheet' id='custom-css-css'  href='css/custom5152.html?ver=1.0' type='text/css' media='all' />
+
+
+                <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+                <!--[if lt IE 9]>
+                <script src="js/html5.js"></script></script>
+                <![endif]-->
+
+        </head>
+
+        <body>
+            <div id="content">
+                <!-- Start of Header -->
+                <div class="header-wrapper">
+                        <header>
+                                <div class="container">
+
+
+                                        <div class="logo-container">
+                                                <!-- Website Logo -->
+                                                <a href="index.html"  title="Knowledge Base Theme">
+                                                        <img src="images/logo.png" alt="Knowledge Base Theme">
+                                                </a>
+                                                <span class="tag-line"> my programming forum</span>
+                                        </div>
+
+
+                                        <!-- Start of Main Navigation -->
+                        <nav class="main-nav">
+                            <div class="menu-top-menu-container">
+                                <ul id="menu-top-menu" class="clearfix">
+                                    <li class="current-menu-item"><a href="index.html">主页</a></li>
+                                    
+                                    <li><a href="articles-list.html">文章列表</a></li>
+                                    
+                                    
+                                    
+                                    <li><a href="contact.html">联系我</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                                        <!-- End of Main Navigation -->
+
+                                </div>
+                        </header>
+                </div>
+                <!-- End of Header -->
+
+                <!-- Start of Search Wrapper -->
+            <div class="search-area-wrapper">
+            <div class="search-area container">
+                <h3 class="search-header" style="margin-top:50px !important">这里是Annika的博客</h3>
+                        <!--<p class="search-tag-line">搜索一下!</p>-->
+
+                        <!--<form id="search-form" class="search-form clearfix" method="get">
+                        <input class="search-term required" type="text" id="s" name="title" placeholder="输入关键字" title="* Please enter a search term!" v-model="searchWord"/>
+                        <input class="search-btn" type="submit" @click="searchSubmit" value="搜索" />
+                        <div id="search-error-container"></div>
+                        </form>-->
+            </div>
+            </div>
+                <!-- End of Search Wrapper -->
+
+                <!-- Start of Page Container -->
+                <div class="page-container">
+                        <div class="container">
+                                <div class="row">
+
+                                        <!-- start of page content -->
+                                        <div class="span8 page-content">
+
+                                                <ul class="breadcrumb">
+                                                        <li><a href="index.html">my forum</a><span class="divider">/</span></li>
+                                                        <li><a :href="categoryUrl(article.category)" title="">{{article.category_display}}</a> <span class="divider">/</span></li>
+                                                        <li class="active">{{article.title}}</li>
+                                                </ul>
+
+                                                <article class=" type-post format-standard hentry clearfix">
+
+                                                        <h1 class="post-title"><a href="#">{{article.title}}</a></h1>
+
+                                                        <div class="post-meta clearfix">
+                                                                <span class="date">{{article.create_time}}</span>
+                                                                <span class="category"><a href="#" title="">{{article.category_display}}</a></span>
+                                                                <span class="comments"><a href="#" title="Comment on Integrating WordPress with Your Website">{{comment_count}} 评论</a></span>
+                                                                <span class="read_numbers">{{article.read_nums}}</span>
+                                                                <span class="like-count">{{article.fav_num}}</span>
+                                                        </div><!-- end of post meta -->
+
+                                                        <p v-html="article.content"></p>
+                                                </article>
+
+                                                <div class="like-btn">
+
+                                                        <form id="like-it-form" action="#" method="post" @click="add(article.pk)">
+                                                                <span class="like-it ">{{article.fav_nums}}</span>
+                                                                <input type="hidden" name="post_id" value="99">
+                                                                <input type="hidden" name="action" value="like_it">
+                                                        </form>
+
+                                                        <span class="tags">
+                                                                <strong>Tags:&nbsp;&nbsp;</strong>
+                                                                
+                                                                <a href="#" rel="tag">{{article.tag}}</a>
+                                                                
+                                                               
+                                                        </span>
+
+                                                </div>
+
+                                                <section id="comments">
+
+                                                        <h3 id="comments-title">({{comment_count}}) 评论</h3>
+
+                                                        <ol class="commentlist">
+
+                                                                <li class="comment even thread-even depth-1" id="li-comment-2" v-for="comment in article.comment">
+                                                                        <article id="comment-2">
+
+                                                                                <a href="#">
+                                                                                        <img alt="" src="http://www.jf258.com/uploads/2013-07-13/171053918.jpg" class="avatar avatar-60 photo" height="60" width="60">
+                                                                                </a>
+
+                                                                                <div class="comment-meta">
+
+                                                                                        <h5 class="author">
+                                                                                                <cite class="fn">
+                                                                                                        <a href="#" rel="external nofollow" class="url">{{comment.name}}</a>
+                                                                                                </cite>
+                                                                                                - <a class="comment-reply-link" href="#">回复</a>
+                                                                                        </h5>
+
+                                                                                        <p class="date">
+                                                                                                <a href="#">
+                                                                                                        <time datetime="2013-02-26T13:18:47+00:00">{{comment.create_time}}</time>
+                                                                                                </a>
+                                                                                        </p>
+
+                                                                                </div><!-- end .comment-meta -->
+
+                                                                                <div class="comment-body">
+                                                                                        <p>{{comment.comment}}</p>
+                                                                                        </div><!-- end of comment-body -->
+
+                                                                        </article><!-- end of comment -->
+
+                                                                        
+                                                                </li>
+
+                                                                
+                                                        </ol>
+
+                                                        <div id="respond">
+
+                                                                <h3>留言</h3>
+
+                                                                <div class="cancel-comment-reply">
+                                                                        <a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display:none;">Click here to cancel reply.</a>
+                                                                </div>
+
+
+                                                                <form action="#" method="post" id="commentform">
+
+
+                                                                        <p class="comment-notes">有什么观点欢迎留言交流噢，星号为必填项 <span class="required">*</span></p>
+
+                                                                        <div>
+                                                                                <label for="name">姓名 *</label>
+                                                                                <input class="span4" type="text" name="name" id="name" value="" size="22" v-model="name">
+                                                                        </div>
+
+                                                                        <div>
+                                                                                <label for="email">邮箱 *</label>
+                                                                                <input class="span4" type="text" name="email" id="email" value="" size="22" v-model="email">
+                                                                        </div>
+
+
+                                                                        <div>
+                                                                                <label for="comment">评论 *</label>
+                                                                                <textarea class="span8" name="comment" id="comment" cols="58" rows="10" v-model="comment"></textarea>
+                                                                        </div>
+
+                                                                        
+                                                                        <div>
+                                                                                <input class="btn" name="submit" type="button" id="submit" @click="submitComment"  value="提交">
+                                                                        </div>
+
+                                                                </form>
+
+                                                        </div>
+
+                                                </section><!-- end of comments -->
+
+                                        </div>
+                                        <!-- end of page content -->
+
+
+                                        <!-- start of sidebar -->
+                                        <aside class="span4 page-sidebar">
+
+                                                <section class="widget">
+												<div class="support-widget">
+													<h3 class="title">联系我</h3>
+													<p class="intro">需要帮助吗？如果你的问题没有答案，欢迎来联系我～</p>
+												</div>
+											</section>
+
+
+                                                <section class="widget">
+                                                        
+													<h3>特色文章</h3>
+													<ul class="featured articles">
+														<li class="article-entry standard" v-for="(article,index) in articles">
+															<h4><a :href="generateUrl(article.pk, index)">{{article.title}}</a></h4>
+															<span class="article-meta">{{article.create_time}} in <a href="#" title="View all posts">{{article.category_display}}</a></span>
+															<span class="like-count" @click="addNum(article.pk, index)">{{article.fav_nums}}</span>
+														</li>
+													</ul>
+                                                        
+                                                </section>
+
+
+
+                                                <section class="widget"><h3 class="title">目录</h3>
+                                                        <ul>
+                                                            <li v-for="category in showCategorys"><a :href="categoryUrl(category)" title="">{{category}}</a> </li>
+                                                                
+                                                        </ul>
+                                                </section>
+
+                                                <section class="widget">
+                                                        <h3 class="title">最新评论</h3>
+                                                        <ul id="recentcomments">
+                                                                <li class="recentcomments" v-for="comment in latest_comment"><a href="#" rel="external nofollow" class="url">{{comment.name}}</a> 说 <a href="#">{{comment.comment}}</a></li>
+                                                        </ul>
+                                                </section>
+
+                                        </aside>
+                                        <!-- end of sidebar -->
+                                </div>
+                        </div>
+                </div>
+                <!-- End of Page Container -->
+
+                <!-- Start of Footer -->
+                <footer id="footer-wrapper">
+                    <div id="footer" class="container">
+                            <div class="row">
+
+                                    <div class="span3">
+                                            <section class="widget">
+                                                    <h3 class="title">本站是如何运行的</h3>
+                                                    <div class="textwidget">
+                                                            <p>本站由django后台+vue前端完成</p>
+                                                    </div>
+                                            </section>
+                                    </div>
+
+                                    <div class="span3">
+                                            <section class="widget"><h3 class="title">目录</h3>
+                                                    <ul>
+                                                        
+                                                        <li v-for="category in showCategorys"><a :href="categoryUrl(category)" title="">{{category}}</a> </li>
+                                                    </ul>
+                                            </section>
+                                    </div>
+
+                                    <div class="span3">
+                                            <section class="widget">
+                                                    <h3 class="title">最新消息</h3>
+                                                    <div id="twitter_update_list">
+                                                            <ul>
+                                                                    <li>No Tweets loaded !</li>
+                                                            </ul>
+                                                    </div>
+                                                    
+                                            </section>
+                                    </div>
+
+                                    <div class="span3">
+                                            <section class="widget">
+                                                    <h3 class="title">活动照片</h3>
+                                                    <div class="flickr-photos" id="basicuse">
+                                                    </div>
+                                            </section>
+                                    </div>
+
+                            </div>
+                    </div>
+                    <!-- end of #footer -->
+
+                    <!-- Footer Bottom -->
+                    <div id="footer-bottom-wrapper">
+                            <div id="footer-bottom" class="container">
+                                    <div class="row">
+                                            <div class="span6">
+                                                    <p class="copyright">
+                                                            Copyright © 2019. All Rights Reserved by Annika Geng.
+                                                    </p>
+                                            </div>
+                                            <div class="span6">
+                                                    <!-- Social Navigation -->
+                                                    <ul class="social-nav clearfix">
+                                                            
+                                                            <li class="twitter"><a target="_blank" href="#"></a></li>
+                                                            <li class="facebook"><a target="_blank" href="#"></a></li>
+                                                    </ul>
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+                    <!-- End of Footer Bottom -->
+
+                </footer>
+                <!-- End of Footer -->
+
+                <a href="#top" id="scroll-top"></a>
+            </div>
+                <!-- script -->
+                <script type='text/javascript' src='js/jquery-1.8.3.min.js'></script>
+                <script type='text/javascript' src='js/jquery.easing.1.3.js'></script>
+                <script type='text/javascript' src='js/prettyphoto/jquery.prettyPhoto.js'></script>
+                <script type='text/javascript' src='js/jflickrfeed.js'></script>
+                <script type='text/javascript' src='js/jquery.liveSearch.js'></script>
+                <script type='text/javascript' src='js/jquery.form.js'></script>
+                <script type='text/javascript' src='js/jquery.validate.min.js'></script>
+                <script type='text/javascript' src='js/custom.js'></script>
+                <script type='text/javascript' src='js/urlrequest.js'></script>
+                <script type='text/javascript' src='js/reload.js'></script>
+                <script src="https://cdn.bootcss.com/vue/2.6.0-beta.3/vue.js"></script>
+                <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+                <script src="https://cdn.bootcss.com/vue-router/3.0.2/vue-router.js"></script>
+                <script type="text/javascript">
+                    var ls = window.localStorage;
+                    // 页面每次加载的时候获取本地存储里面的值    
+                    if (ls.getItem('sTop')) {
+                        var oldStop = ls.getItem('sTop');
+                        // 获取到的值来设置页面滚动条的位置      
+                        if (document.documentElement.scrollTop) {
+                            document.documentElement.scrollTop = oldStop;
+                        } else {
+                            document.body.scrollTop = oldStop;
+                        }
+                    } else {
+                        console.log('抱歉，找不到滚动条的值');
+                    }
+                    // 监听页面滚动条的状态（是否滚动）    
+                    window.addEventListener('scroll',
+                    function() {
+                        // 滚动时获取页面滚动条的位置      
+                        var sTop = document.documentElement.scrollTop || document.body.scrollTop;
+                        try {
+                            // 滚动条的位置保存到本地存储里面        
+                            //ls.sTop=sTop; 
+                            //或是这种方式存储         
+                            ls.setItem("sTop", sTop);
+                        } catch(e) {
+                            if (e == QUOTA_EXCEEDED_ERR) {
+                                alert("Quota exceeded!");
+                            }
+                        }
+                    },
+                    false);
+                </script>
+                <script type="text/javascript">
+                    var article = "http://127.0.0.1:8000/articles/article_detail/";
+                    var featured = "http://127.0.0.1:8000/articles/featured_article_list/";
+                    var like = "http://127.0.0.1:8000/articles/add_thumbs/";
+                    var all = "http://127.0.0.1:8000/articles/article_list/";
+                    var create_comment = "http://127.0.0.1:8000/user_operation/create_comment/";
+                    var latest_comment = "http://127.0.0.1:8000/user_operation/latest_comments/"
+                    var vm = new Vue({
+                        el:'#content',
+                        data:{
+                            pk:null,
+                            article:null,
+                            articles:[],
+                            allArticles:[],
+                            name:null,
+                            email:null,
+                            comment:null,
+                            latest_comment:[]
+                        },
+                        mounted:function(){
+                            var _this = this;
+                            var Request = new Object();
+                            Request = GetRequest();
+                            _this.pk = Request['pk'];
+                            
+                            url = article + _this.pk + '/';
+                            axios.get(url).then(function(response) {
+                                _this.article= response.data;
+                                
+                            });
+                            axios.get(featured).then(function(response) {
+                                _this.articles= response.data.results;
+                            }); 
+                            axios.get(all).then(function(response) {
+                                _this.allArticles= response.data.results;
+                            });
+                            axios.get(latest_comment).then(function(response) {
+                                _this.latest_comment= response.data.results;
+                            }); 
+                        },
+                        methods:{
+                            addNum (pk, index) {
+                                var _this = this
+                                console.log(pk);
+                                var params = new URLSearchParams();
+                                params.append('pk', pk);
+                                axios.post(like, params).then(function(response) {
+                                    _this.articles[index].fav_nums++;
+                                    
+                                });
+                            },
+                            add (pk) {
+                                var _this = this
+                                console.log(pk);
+                                var params = new URLSearchParams();
+                                params.append('pk', pk);
+                                axios.post(like, params).then(function(response) {
+                                    _this.article.fav_nums++;
+                                    
+                                });
+                            },
+                            categoryUrl(item){
+                                if(item=='程序人生'){item=0}
+                                else if (item=='前端'){item=1}
+                                else if (item=='架构'){item=2}
+                                else if (item=='区块链'){item=3}
+                                else if (item=='游戏开发'){item=4}
+                                else if (item=='移动开发'){item=5}
+                                else if (item=='云计算'){item=6}
+                                else {item=7}
+                                var base = 'articles-list.html';
+                                url = base + '?category=' + item;
+                                return url
+                            },
+                            generateUrl(pk, index){
+                                var base = 'single.html';
+                                url = base + '?pk=' + pk;
+                                return url
+                            },
+                            submitComment(){
+                                var _this = this
+                                var pk = _this.article.pk;
+                                var name = _this.name;
+                                var email = _this.email;
+                                var comment = _this.comment;
+                                var params = new URLSearchParams();
+                                params.append('article', pk);
+                                params.append('name', name);
+                                params.append('email', email);
+                                params.append('comment', comment);
+                                axios.post(create_comment, params).then(function(response) {
+                                    location.reload()
+                                    
+                                }).catch(function (error){
+                                    console.log(error);
+                                });
+                            }
+                        },
+                        computed:{
+                            showCategorys:function(){
+                                var arr = new Array();
+                                for(var i = 0;i < this.allArticles.length; i++){
+                                    if(arr.indexOf(this.allArticles[i].category_display) == -1){
+                                        arr.push(this.allArticles[i].category_display)
+                                    }
+                                }
+                                return arr
+                            },
+                            comment_count:function(){
+                                var comments = this.article.comment;
+                                var count = 0
+                                if(comments){
+                                    for(var i=0;i<comments.length;i++){
+                                        count++;
+                                    }
+                                }
+                                return count
+
+                            }
+
+                        }
+                    })
+                </script>
+
+
+        </body>
+</html>

@@ -1,0 +1,40 @@
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>登陆</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<meta name="keywords" content="Blog Login Form Responsive Templates, Iphone Compatible Templates, Smartphone Compatible Templates, Ipad Compatible Templates, Flat Responsive Templates"/>
+<link href="css/login_style.css" rel='stylesheet' type='text/css' />
+<!--webfonts-->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+<!--/webfonts-->
+</head>
+<body>
+<!--start-main-->
+<h1>帐号登录</h1>
+<div class="login-box">
+	<div class="camera"> </div>
+	<h2>Annika's blog</h2>
+	<form>
+		<input class="text" name="account_l" id="account_l" type="text" v-model="userName" @focus="errorUnshow" value="手机号/账号" onfocus="this.value = '' ">
+		<input type="password" value="请输入您的密码" onfocus="this.value = ''" name="password_l" id="password_l" v-model="parseWord" @focus="errorUnshow">
+		<div class="btn btn-green"><input type="submit" value="立即登陆" id="jsLoginBtn" @click = "login"></input></div>
+	</form>
+		<div class="remember"><p>没有账号?</p>
+		<h4><a href="#">马上注册<img src="images/arrow.png" /></a></h4>
+	</div>
+</div>
+<!--//End-login-form-->
+	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+</body>
+</html>

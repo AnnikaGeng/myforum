@@ -1,0 +1,339 @@
+<!doctype html>
+    <!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en-US"> <![endif]-->
+    <!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="en-US"> <![endif]-->
+    <!--[if IE 8]>    <html class="lt-ie9" lang="en-US"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html lang="en-US"> <!--<![endif]-->
+    <head>
+            <!-- META TAGS -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>my forum</title>
+
+        <link rel="shortcut icon" href="images/favicon.png" />
+
+        <!-- Style Sheet-->
+        
+        <link rel="stylesheet" href="style.css"/>
+        <link rel='stylesheet' id='bootstrap-css-css'  href='css/bootstrap5152.css?ver=1.0' type='text/css' media='all' />
+        <link rel='stylesheet' id='responsive-css-css'  href='css/responsive5152.css?ver=1.0' type='text/css' media='all' />
+        <link rel='stylesheet' id='pretty-photo-css-css'  href='js/prettyphoto/prettyPhotoaeb9.css?ver=3.1.4' type='text/css' media='all' />
+        <link rel='stylesheet' id='main-css-css'  href='css/main5152.css?ver=1.0' type='text/css' media='all' />
+        <link rel='stylesheet' id='custom-css-css'  href='css/custom5152.html?ver=1.0' type='text/css' media='all' />
+
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="js/html5.js"></script>
+        <![endif]-->
+
+    </head>
+
+    <body>
+        <div id="content">
+        <!-- Start of Header -->
+        <div class="header-wrapper">
+            <header>
+                <div class="container">
+
+
+                    <div class="logo-container">
+                        <!-- Website Logo -->
+                        <a href="index.html"  title="Knowledge Base Theme">
+                            <img src="images/logo.png" alt="Knowledge Base Theme">
+                        </a>
+                        <span class="tag-line"> my programming forum</span>
+                    </div>
+
+
+                        <!-- Start of Main Navigation -->
+                        <nav class="main-nav">
+                            <div class="menu-top-menu-container">
+                                <ul id="menu-top-menu" class="clearfix">
+                                    <li class="current-menu-item"><a href="index.html">主页</a></li>
+                                    
+                                    <li><a href="articles-list.html">文章列表</a></li>
+                                    
+                                    <li><a href="contact.html">联系我</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <!-- End of Main Navigation -->
+
+                    </div>
+                </header>
+        </div>
+        <!-- End of Header -->
+
+        <!-- Start of Search Wrapper -->
+        <div class="search-area-wrapper">
+            <div class="search-area container">
+                <h3 class="search-header" style="margin-top:50px !important">这里是Annika的博客</h3>
+                        <!--<p class="search-tag-line">搜索一下!</p>-->
+
+                        <!--<form id="search-form" class="search-form clearfix" method="get">
+                        <input class="search-term required" type="text" id="s" name="title" placeholder="输入关键字" title="* Please enter a search term!" v-model="searchWord"/>
+                        <input class="search-btn" type="submit" @click="searchSubmit" value="搜索" />
+                        <div id="search-error-container"></div>
+                        </form>-->
+            </div>
+        </div>
+
+        <!-- Start of Page Container -->
+        <div class="page-container">
+            <div class="container">
+                <div class="row">
+
+                                <!-- start of page content -->
+                    <div class="span8 page-content">
+
+                                        <!-- Basic Home Page Template -->
+                        <div class="row separator">
+                            <section class="span4 articles-list">
+                                <h3>特色文章</h3>
+                                <ul class="featured articles">
+                                    <li class="article-entry standard" v-for="(article,index) in articles">
+                                        <h4><a :href="generateUrl(article.pk, index)">{{article.title}}</a></h4>
+                                        <span class="article-meta">{{article.create_time}} in <a :href="categoryUrl(article.category)" title="View all posts">{{article.category_display}}</a></span>
+                                        <span class="like-count" @click="addNum(article.pk, index)">{{article.fav_nums}}</span>
+                                    </li>
+                                </ul>
+                            </section>
+
+
+                            <section class="span4 articles-list">
+                                    <h3>最近文章</h3>
+                                    <ul class="latest articles">
+                                        <li class="article-entry standard" v-for="(article,index) in latestArticle">
+                                            <h4><a :href="generateUrl(article.pk, index)">{{article.title}}</a></h4>
+                                            <span class="article-meta">{{article.create_time}} in <a :href="categoryUrl(article.category)" title="View all posts">{{article.category_display}}</a></span>
+                                            <span class="like-count" @click="addNumL(article.pk, index)">{{article.fav_nums}}</span>
+                                        </li>
+                                    </ul>
+                            </section>
+                        </div>
+                </div>
+                                <!-- end of page content -->
+
+
+                                <!-- start of sidebar -->
+                                <aside class="span4 page-sidebar">
+
+                                    <section class="widget">
+												<div class="support-widget">
+													<h3 class="title">联系我</h3>
+													<p class="intro">需要帮助吗？如果你的问题没有答案，欢迎来联系我～</p>
+												</div>
+											</section>
+
+                                    <section class="widget">
+                                        <div class="quick-links-widget">
+                                            <h3 class="title">快速链接</h3>
+                                            <ul id="menu-quick-links" class="menu clearfix">
+                                                <li><a href="index.html">主页</a></li>
+                                                <li><a href="articles-list.html">文章列表</a></li>
+                                                <li><a href="faq.html">FAQs</a></li>
+                                                <li><a href="contact.html">联系我</a></li>
+                                            </ul>
+                                        </div>
+                                    </section>
+
+                                    <section class="widget">
+                                        <h3 class="title">标签</h3>
+                                        <div class="tagcloud">
+                                            <a :href="tagUrl(item)" class="btn btn-mini" v-for="item in showTags">{{item}}</a>
+                                                
+                                        </div>
+                                    </section>
+
+                                </aside>
+                                <!-- end of sidebar -->
+                        </div>
+                </div>
+            </div>
+            <!-- End of Page Container -->
+
+            <!-- Start of Footer -->
+            <footer id="footer-wrapper">
+                    <div id="footer" class="container">
+                            <div class="row">
+
+                                    <div class="span3">
+                                            <section class="widget">
+                                                    <h3 class="title">本站是如何运行的</h3>
+                                                    <div class="textwidget">
+                                                            <p>本站由django后台+vue前端完成</p>
+                                                    </div>
+                                            </section>
+                                    </div>
+
+                                    <div class="span3">
+                                            <section class="widget"><h3 class="title">目录</h3>
+                                                    <ul>
+                                                        
+                                                        <li v-for="category in showCategorys"><a :href="categoryUrl(category)" title="">{{category}}</a> </li>
+                                                    </ul>
+                                            </section>
+                                    </div>
+
+                                    <div class="span3">
+                                            <section class="widget">
+                                                    <h3 class="title">最新消息</h3>
+                                                    <div id="twitter_update_list">
+                                                            <ul>
+                                                                    <li>还没有消息 !</li>
+                                                            </ul>
+                                                    </div>
+                                                    
+                                            </section>
+                                    </div>
+
+                                    <div class="span3">
+                                            <section class="widget">
+                                                    <h3 class="title">活动照片</h3>
+                                                    <div class="flickr-photos" id="basicuse">
+                                                    </div>
+                                            </section>
+                                    </div>
+
+                            </div>
+                    </div>
+                    <!-- end of #footer -->
+
+                    <!-- Footer Bottom -->
+                    <div id="footer-bottom-wrapper">
+                            <div id="footer-bottom" class="container">
+                                    <div class="row">
+                                            <div class="span6">
+                                                    <p class="copyright">
+                                                            Copyright © 2019. All Rights Reserved by Annika Geng.
+                                                    </p>
+                                            </div>
+                                            <div class="span6">
+                                                    <!-- Social Navigation -->
+                                                    <ul class="social-nav clearfix">
+                                                            
+                                                            <li class="twitter"><a target="_blank" href="#"></a></li>
+                                                            <li class="facebook"><a target="_blank" href="#"></a></li>
+                                                    </ul>
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+                    <!-- End of Footer Bottom -->
+
+            </footer>
+            <!-- End of Footer -->
+
+            <a href="#top" id="scroll-top"></a>
+            </div>
+            <!-- script -->
+            <script type='text/javascript' src='js/jquery-1.8.3.min.js'></script>
+            <script type='text/javascript' src='js/jquery.easing.1.3.js'></script>
+            <script type='text/javascript' src='js/prettyphoto/jquery.prettyPhoto.js'></script>
+            <script type='text/javascript' src='js/jflickrfeed.js'></script>
+            <script type='text/javascript' src='js/jquery.liveSearch.js'></script>
+            <script type='text/javascript' src='js/jquery.form.js'></script>
+            <script type='text/javascript' src='js/jquery.validate.min.js'></script>
+            <script type='text/javascript' src='js/custom.js'></script>
+            <script src="https://cdn.bootcss.com/vue/2.6.0-beta.3/vue.js"></script>
+            <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+            
+            <script>
+            var latest = "http://127.0.0.1:8000/articles/latest_article_list/";
+            var featured = "http://127.0.0.1:8000/articles/featured_article_list/";
+            var all = "http://127.0.0.1:8000/articles/article_list/"
+            var like = "http://127.0.0.1:8000/articles/add_thumbs/"
+            var vm = new Vue({
+                el:'#content',
+                data:{
+                    articles:[],
+                    latestArticle:[],
+                    allArticles:[],
+                
+                },
+                mounted:function(){
+                    var self = this
+                    axios.get(featured).then(function(response) {
+                        self.articles= response.data.results;
+                    });    
+                    axios.get(latest).then(function(response) {
+                        self.latestArticle= response.data.results;
+                    });
+                    axios.get(all).then(function(response) {
+                        self.allArticles= response.data.results;
+                    });
+                    
+                    
+                },
+                methods:{
+                    addNum (pk, index) {
+                        var _this = this
+                        console.log(pk);
+                        var params = new URLSearchParams();
+                        params.append('pk', pk);
+                        axios.post(like, params).then(function(response) {
+                            _this.articles[index].fav_nums++;
+                        });
+                    },
+                    addNumL (pk, index) {
+                        var _this = this
+                        console.log(pk);
+                        var params = new URLSearchParams();
+                        params.append('pk', pk);
+                        axios.post(like, params).then(function(response) {
+                            _this.latestArticle[index].fav_nums++;
+                        });
+                    },
+                    generateUrl(pk, index){
+                        var base = 'single.html';
+                        url = base + '?pk=' + pk;
+                        return url
+                    },
+                    tagUrl(item){
+                        var base = 'articles-list.html';
+                        url = base + '?tag=' + item;
+                        return url
+                    },
+                    categoryUrl(item){
+						if(item=='程序人生'){item=0}
+						else if (item=='前端'){item=1}
+						else if (item=='架构'){item=2}
+						else if (item=='区块链'){item=3}
+						else if (item=='游戏开发'){item=4}
+						else if (item=='移动开发'){item=5}
+						else if (item=='云计算'){item=6}
+						else {item=7}
+						var base = 'articles-list.html';
+						url = base + '?category=' + item;
+						return url
+					}
+                    
+                },
+                computed:{
+                    showTags:function(){
+                        var arr = new Array();
+                        for(var i = 0;i < this.allArticles.length ; i++){
+                            if(arr.indexOf(this.allArticles[i].tag) == -1){
+                                arr.push(this.allArticles[i].tag)
+                            }
+                        }
+                        return arr
+                    },
+                    showCategorys:function(){
+                        var arr = new Array();
+                        for(var i = 0;i < this.allArticles.length; i++){
+                            if(arr.indexOf(this.allArticles[i].category_display) == -1){
+                                arr.push(this.allArticles[i].category_display)
+                            }
+                        }
+                        return arr
+                    }
+                }
+            });
+            
+
+            </script>
+
+    </body>
+</html>
